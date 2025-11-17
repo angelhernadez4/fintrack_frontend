@@ -1,1 +1,76 @@
 /* You can add global styles to this file, and also import other style files */
+@use "assets/theme/theme.scss";
+@import "normalize.css/normalize.css";
+@import "primeflex/primeflex.css";
+@import "primeicons/primeicons.css";
+
+:root {
+    --bg-slope-color: #ffffff; /* claro */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+         --bg-slope-color: #121212; /* oscuro */
+    }
+}
+
+/* Custom global styles */
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: var(--p-slate-600);
+}
+
+/** Auth pages **/
+.title {
+    font-weight: 900;
+    font-size: 3.75rem;
+    line-height: 1;
+    margin: 0;
+    color: var(--p-text-color);
+}
+
+.subtitle {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.blue {
+    color: var(--p-blue-600);
+}
+
+.nav-auth {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .nav-auth {
+        flex-direction: row;
+    }
+}
+
+p-floatlabel {
+    width: 100%; /* Asegura que el contenedor de la etiqueta flotante tenga el 100% de ancho */
+}
+
+p-password {
+    width: 100%; /* Asegura que el contenedor de la etiqueta flotante tenga el 100% de ancho */
+}
+
+p-inputnumber {
+    width: 100%;
+}
+
+p-floatlabel input {
+    width: 100% !important; /* Fuerza el ancho del input interno */
+}

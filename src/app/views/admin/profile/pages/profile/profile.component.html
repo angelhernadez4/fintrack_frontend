@@ -1,0 +1,38 @@
+<div class="flex flex-column-reverse md:flex-row md:justify-content-between align-items-center p-5">
+    <div class="">
+        <h1 class="title">Actualizar perfil</h1>
+        <p class="subtitle">aquí puedes cambiar los datos de tu<span class="blue"> perfil</span></p>
+    </div>
+</div>
+
+<div class="flex justify-content-center">
+    @if (!state().loadingData) {
+        <p-card [style]="{'width': '40rem'}">
+            <form [formGroup]="form" (keydown.enter)="submit()">
+                <div class="mt-6 card flex justify-center">
+                    <p-floatlabel>
+                        <input id="name" pInputText [formControlName]="formControlNames.NAME" />
+                        <label for="name">Nombre</label>
+                    </p-floatlabel>
+                </div>
+                <div class="mt-6 card flex justify-center">
+                    <p-floatlabel>
+                        <input id="name" pInputText [formControlName]="formControlNames.LAST_NAME" />
+                        <label for="name">Apellidos</label>
+                    </p-floatlabel>
+                </div>
+                <div class="mt-6 card flex justify-center">
+                    <p-floatlabel> 
+                        <input type="email" id="email" pInputText [formControlName]="formControlNames.EMAIL" />
+                        <label for="email">Correo electrónico</label>
+                    </p-floatlabel>
+                </div>
+            </form>
+            <div class="pt-4">
+                <app-main-button (onClick)="submit()" [label]="submitLabel()" [loading]="state().loadingSubmit" [disabled]="form.invalid" />
+            </div>
+        </p-card>
+    } @else {
+        <app-spinner />
+    }
+</div>

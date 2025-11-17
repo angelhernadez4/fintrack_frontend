@@ -1,0 +1,20 @@
+<p-button
+    (onClick)="click()"
+    [disabled]="loading() || disabled()"
+    size="small"
+    [severity]="severity()"
+    raised
+    fluid
+    styleClass="btn-custom"
+    [style]="{ 'font-size': '1.2rem' }"
+>
+    <div class="flex gap-3 align-items-center">
+        @if (icon()) {
+            <i [class]="icon()"></i>
+        }
+        {{ label() }}
+        @if(loading()) {
+            <app-mini-spinner/>
+        }
+    </div>
+</p-button>

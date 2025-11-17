@@ -1,0 +1,13 @@
+<p-card class="card-responsive"> <!--[style]="{'width': '60rem'}"  -->
+    <div class="flex justify-content-between align-items-center align-content-center gap-3">
+        <div>
+            <p-button class="card-title-ellipsis" [label]="shortenedTitle" [routerLink]="[detailRoute(), id()]" [style]="{'color': '#2563eb'}" link styleClass="text-xl font-bold pl-0"/>
+            <p class="m-0">
+                {{ amount() | currency: 'MXN' }}
+            </p>
+        </div>
+        <div class="flex justify-center">
+            <p-button type="button" icon="pi pi-ellipsis-v" (onClick)="click($event)" styleClass="p-button-text p-button-rounded p-button-plain" />
+        </div>
+    </div>
+</p-card>

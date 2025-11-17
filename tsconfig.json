@@ -16,7 +16,17 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "ES2022"
+    "module": "ES2022",
+    "baseUrl": "./",
+    "paths": {
+      "@core/*": ["src/app/core/*"],
+      "@views/*": ["src/app/views/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@prime-ng-module": ["src/app/prime-ng/prime-ng.module.ts"],
+      "@layouts/*": ["src/app/layouts/*"],
+      "@environments/*": ["src/environments/*"],
+      "@assets/*": ["assets/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

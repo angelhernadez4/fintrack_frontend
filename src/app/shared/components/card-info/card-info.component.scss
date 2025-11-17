@@ -1,0 +1,9 @@
+.card-responsive {
+    width: 30rem;
+}
+
+@media (min-width: 768px) {
+    .card-responsive {
+        width: 60rem;
+    }
+}

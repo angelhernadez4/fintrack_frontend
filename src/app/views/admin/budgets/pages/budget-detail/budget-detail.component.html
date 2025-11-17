@@ -1,0 +1,74 @@
+<div class="flex flex-column gap-4 md:flex-row md:justify-content-between align-items-center p-5">
+    <div class="text-center md:text-left">
+        @if (!state().loadingData) {
+            <h1 class="title pb-2">{{ budget()!.name }}</h1>
+
+        } @else {
+            <p-skeleton width="21rem" height="5rem" />
+        }
+        <p class="subtitle">administra tus<span class="blue"> gastos</span></p>
+    </div>
+    <p-button label="Agregar" icon="pi pi-plus" [raised]="true" (onClick)="openDialog('create')" />
+</div>
+
+<div class="flex flex-column align-items-center gap-3">
+    @if (!state().loadingData && budget()!.expenses) {
+        @if (budget()!.expenses.length) {
+            <div class="grid_p">
+                <circle-progress
+                    [percent]="percentage()"
+                    [maxPercent]="100"
+                    [radius]="159"
+                    [toFixed]="2"
+                    [showSubtitle]="false"
+                    [outerStrokeWidth]="10"
+                    [innerStrokeWidth]="8"
+                    [outerStrokeColor]="'#3761e2'"
+                    [innerStrokeColor]="'#1a2551'"
+                    [animation]="true"
+                    [animationDuration]="500"
+                    [titleFontSize]="'50'"
+                    [unitsFontSize]="'50'"
+                />
+                <div class="flex flex-column justify-content-center align-items-center md:align-items-start gap-5">
+                    <p>Presupuesto: {{ budget()!.amount | currency: 'MXN'  }}</p>
+                    <p>Disponible: {{ totalAvailable() | currency: 'MXN' }}</p>
+                    <p>Gastado: {{ totalSpent() | currency: 'MXN' }}</p>
+                </div>
+            </div>
+            <div class="text-center md:text-left">
+                <h1 class="title">Gastos en este presupuesto</h1>
+            </div>
+            <div class="flex flex-column align-items-center gap-3">
+                @for (expense of visibleExpenses(); track $index) {
+                    <app-card-info [titleKey]="expense.name" [amount]="expense.amount" [data]="expense" (onClick)="openPopover($event.event, $event.data, popover)" />
+                }
+                <div class="card flex justify-center">
+                    <p-paginator [totalRecords]="budget()!.expenses.length" [rows]="rowsPerPage()" [rowsPerPageOptions]="[1, 2, 3, 4, 5, 10]" (onPageChange)="onPageChange($event)"  />
+                </div>
+            </div>
+        } @else {
+            <p class="text-center">No hay gastos aún</p>
+        }
+    } @else {
+        <app-spinner />
+    }
+</div>
+
+<app-expense [visible]="dialogVisible()" (onClose)="closeDialog($event)" [mode]="dialogMode()" [idExpense]="expenseId()" [idBudget]="budgetId()" /> 
+
+<p-popover #popover> 
+    <div class="flex flex-column gap-4">
+        <div>
+            <ul class="list-none p-0 m-0 flex flex-column">
+                <li class="flex items-center gap-2 px-2 py-3 hover:bg-emphasis cursor-pointer rounded-border">
+                    <i class="pi pi-pen-to-square"></i>
+                    <div>
+                        <a class="text-sm text-surface-500 dark:text-surface-400" (click)="openDialog('edit', selectedExpense()!._id)">Actualizar</a>
+                    </div>
+                </li>
+                <app-expense-list [Expense]="selectedExpense()!" [budgetId]="budgetId()" (onDeleted)="getBudget(budgetId())" />
+            </ul>
+        </div>
+    </div>
+</p-popover>

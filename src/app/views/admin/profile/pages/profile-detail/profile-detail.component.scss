@@ -1,0 +1,28 @@
+.t {
+    font-size: 1.25rem;
+}
+
+.grid-ms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+@media (min-width: 768px) {
+    .grid-ms {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-link:hover p-card {
+    cursor: pointer;
+}

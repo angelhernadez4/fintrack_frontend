@@ -1,0 +1,52 @@
+<p-toast position="top-right" />
+<div class="text-center md:text-left">
+    <h1 class="title">Crea tu cuenta</h1>
+    <p class="subtitle">y controla tus <span class="blue"> finanzas</span></p>
+</div>
+
+<form [formGroup]="form" nonvalidate (keydown.enter)="register()">
+    <div class="mt-6 card flex justify-center">
+        <p-floatlabel> 
+            <input id="email" pInputText formControlName="email" />
+            <label for="email">Correo electrónico</label>
+        </p-floatlabel>
+    </div>
+    <div class="mt-6 card flex justify-center">
+        <p-floatlabel> 
+            <input id="name" pInputText type="text" formControlName="name" />
+            <label for="name">Nombre</label>
+        </p-floatlabel>
+    </div>
+    <div class="mt-6 card flex justify-center">
+        <p-floatlabel> 
+            <input id="lastName" pInputText type="text" formControlName="lastName" />
+            <label for="lastName">Apellido</label>
+        </p-floatlabel>
+    </div>
+    <div class="mt-6 card flex justify-center">
+        <p-floatlabel> 
+            <input id="username" pInputText type="text" formControlName="username" />
+            <label for="username">Nombre de usuario</label>
+        </p-floatlabel>
+    </div>
+    <div class="mt-6 card flex justify-center">
+        <p-floatlabel> 
+            <p-password id="password" [toggleMask]="true" [feedback]="false" formControlName="password" />
+            <label for="password">Contraseña</label>
+        </p-floatlabel>
+    </div>
+    <div class="mt-6 card flex justify-center">
+        <p-floatlabel> 
+            <p-password id="password_confirmation" [toggleMask]="true" [feedback]="false" formControlName="password_confirmation" />
+            <label for="password_confirmation">Repetir contraseña</label>
+        </p-floatlabel>
+    </div>
+    <div class="mt-4">
+        <app-main-button (onClick)="register()" [label]="loading() ? 'Registrandote...' : 'Registrarme'" [loading]="loading()" [disabled]="form.invalid" />
+    </div>
+</form>
+
+<nav class="nav-auth">
+    <a [routerLink]="'/auth/login'">¿Ya tienes cuenta? Inicia sesión</a>
+    <a [routerLink]="'/auth/forgot-password'">¿Olvidaste tu contraseña? Reestablecer</a>
+</nav>

@@ -1,0 +1,16 @@
+<div class="text-center md:text-left">
+    <h1 class="title">Confirma tu cuenta</h1>
+    <p class="subtitle">ingresa el código que recibiste <span class="blue"> por correo electrónico</span></p>
+</div>
+
+<div class="card flex mt-8 justify-content-center">
+    <form [formGroup]="form" (keydown.enter)="validateToken()">
+        <p-inputotp [integerOnly]="true" [length]="6" size="large" formControlName="token"></p-inputotp>
+        <div class="pt-4">
+            <app-main-button (onClick)="validateToken()" [label]="loading() ? 'Confirmando código...' : 'Confirmar'" [loading]="loading()" [disabled]="form.invalid" />
+        </div>
+        <div class="flex justify-content-center mt-5">
+            <p-button styleClass="btn-custom" label="Reenviar código ({{ timeLeft() }})" variant="text" [disabled]="resendDisabled()" (onClick)="resendNewToken()" />
+        </div>
+    </form>
+</div>

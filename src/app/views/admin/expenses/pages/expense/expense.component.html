@@ -1,0 +1,32 @@
+<p-dialog
+    [header]="headerLabel()"
+    [visible]="visible()"
+    [modal]="true"
+    [closable]="false"
+    [style]="{width: '45rem'}"
+>
+    @if (!state().loadingData) {
+        <form [formGroup]="form" (keydown.enter)="submit()" novalidate>
+            <div class="mt-6 card flex justify-center">
+                <p-floatLabel>
+                    <input id="name" pInputText [formControlName]="formControlNames.NAME">
+                    <label for="name">Nombre</label>
+                </p-floatLabel>
+            </div>
+            <div class="mt-6 card flex justify-center">
+                <p-floatLabel>
+                    <p-inputnumber id="amount" inputId="amount" mode="currency" currency="MXN" locale="es-MX" [formControlName]="formControlNames.AMOUNT" />
+                    <label for="amount">Cantidad presupuesto</label>
+                </p-floatLabel>
+            </div>
+        </form>
+        <div class="flex justify-content-end gap-2 mt-4">
+            <p-button label="Cancelar" severity="secondary" (onClick)="close()" styleClass="p-button-text"  />
+            <app-main-button (onClick)="submit()" [label]="submitLabel()" [loading]="state().loadingSubmit" [disabled]="form.invalid" />
+        </div>
+    } @else {
+        <div class="p-5">
+            <app-spinner />
+        </div>
+    }
+</p-dialog>

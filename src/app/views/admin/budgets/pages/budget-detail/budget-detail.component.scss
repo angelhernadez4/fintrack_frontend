@@ -1,0 +1,11 @@
+.grid_p {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+    .grid_p {
+        display: flex;
+        gap: 9rem;
+    }
+}

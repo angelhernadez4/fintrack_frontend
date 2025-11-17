@@ -1,0 +1,50 @@
+.title {
+    font-weight: 900;
+    font-size: 3rem;
+    color: var(--p-text-color);
+}
+
+.alig {
+    text-align: justify;
+}
+
+.subtitle {
+    font-weight: 900;
+    font-size: 2.3rem;
+    color: #FFFFFF;
+}
+
+.tam {
+    width: 64rem;
+}
+
+.w-40 {
+    width: 35rem;
+}
+
+.bg {
+    background-color: var(--p-blue-500);
+    padding: 14rem 0;
+    position: relative;
+    overflow: hidden;
+}
+.bg::before,
+.bg::after {
+    background-color: var(--bg-slope-color);
+    content: '';
+    height: 20rem;
+    width: 110%;
+    position: absolute;
+}
+
+.bg::before {
+    top: -10rem;
+    left: 0;
+    transform: skewY(3deg);
+}
+
+.bg::after {
+    bottom: -10rem;
+    left: -5rem;
+    transform: skewY(-3deg);
+}

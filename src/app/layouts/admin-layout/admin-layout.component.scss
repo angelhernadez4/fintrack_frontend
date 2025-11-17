@@ -1,0 +1,9 @@
+.p-20 {
+    padding: 0 9rem;
+}
+
+.active-link ::ng-deep .p-button {
+    color: var(--p-blue-300) !important; /* texto azul claro */
+    font-weight: 600;
+    border-bottom: 2px solid var(--p-blue-300);
+}

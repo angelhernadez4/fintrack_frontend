@@ -1,0 +1,23 @@
+<div class="flex align-items-center gap-5">
+    <p-avatar [label]="initials()" class="mr-2" size="xlarge" shape="circle" [style]="{ 'background-color': '#e0f2fe', color: '#1f40b0' }" />
+    <section>
+        <p class="font-semibold">{{ fullName() }}</p>
+        <p>{{ email() }}</p>
+    </section>
+</div>
+<div class="grid-ms mt-5">
+    <div class="card-link">
+        <p-card [style]="{ width: '20rem' }" [routerLink]="`/admin/profile/edit/${_id()}`">
+            <ng-template #title><i class="pi pi-id-card t"></i></ng-template>
+            <ng-template #subtitle>Tu información</ng-template>
+            <p class="m-0">Actualizar tus datos personales.</p>
+        </p-card>
+    </div>
+    <div class="card-link" routerLink="/admin/profile/update-password">
+        <p-card [style]="{ width: '20rem' }">
+            <ng-template #title><i class="pi pi-lock t"></i></ng-template>
+            <ng-template #subtitle>Seguridad</ng-template>
+            <p class="m-0">Actualizar tu contraseña.</p>
+        </p-card>
+    </div>
+</div>

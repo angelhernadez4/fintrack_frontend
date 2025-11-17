@@ -1,0 +1,47 @@
+@media (min-width: 1024px) {
+    .divition {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        min-height: 100vh;
+    }
+}
+
+.graphic {
+    display: flex;
+    justify-content: center;
+    background-color: var(--p-blue-950);
+    background-image: url('/grafico.svg');
+    background-repeat: no-repeat;
+    background-size: 30rem;
+    background-position: left bottom;
+}
+
+.logo {
+    width: 24rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+    .logo {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}
+
+.main-content {
+    padding: 2.5rem;
+
+    .main-router {
+        max-width: 48rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .main-content {
+        padding-top: 7rem;
+        padding-bottom: 7rem;
+    }
+}

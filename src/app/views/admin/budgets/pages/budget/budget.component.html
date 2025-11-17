@@ -1,0 +1,33 @@
+<div class="flex flex-column gap-4 md:flex-row md:justify-content-between align-items-center p-5">
+    <div class="text-center md:text-left">
+        <h1 class="title">{{ headerLabel() }}</h1>
+        <p class="subtitle">{{ this.state().case === 'create' ? 'llena el formulario y crea un nuevo' : 'modifica el formulario y actualiza el' }} <span class="blue"> presupuesto</span></p>
+    </div>
+    <p-button [routerLink]="'/admin'" label="Volver" icon="pi pi-arrow-left" [raised]="true"></p-button>
+</div>
+
+<div class="flex justify-content-center">
+    @if (!state().loadingData) {
+    <p-card [style]="{'width': '40rem'}">
+        <form [formGroup]="form" (keydown.enter)="submit()" novalidate>
+            <div class="mt-6 card flex justify-center">
+                <p-floatlabel>
+                    <input id="name" pInputText [formControlName]="formControlNames.NAME" />
+                    <label for="name">Nombre</label>
+                </p-floatlabel>
+            </div>
+            <div class="mt-6 card flex justify-center">
+                <p-floatlabel>
+                    <p-inputnumber id="amount" inputId="amount" mode="currency" currency="MXN" locale="es-MX" [formControlName]="formControlNames.AMOUNT"/>
+                    <label for="amount">Cantidad presupuesto</label>
+                </p-floatlabel>
+            </div>
+        </form>
+        <div class="pt-4">
+            <app-main-button (onClick)="submit()" [label]="submitLabel()" [loading]="state().loadingSubmit" [disabled]="form.invalid" />
+        </div>
+    </p-card>
+    } @else {
+        <app-spinner />
+    }
+</div>

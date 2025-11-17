@@ -1,0 +1,34 @@
+<p-toast></p-toast>
+<p-confirmDialog />
+
+<p-toolbar class="mb-5" [style]="{'background-color': 'var(--p-blue-950)', 'border': 'none', 'border-radius': '0'}">
+    <ng-template pTemplate="start">
+        <app-logo routerLink="/admin" />
+    </ng-template>
+    <ng-template pTemplate="end">
+        <div class="flex items-center gap-4">
+            <p-button [routerLink]="'/admin/profile/detail'" [style]="{'color': '#ffffff'}" label="Perfil" link routerLinkActive="active-link" />
+            <p-button routerLink="/admin/budgets" label="Mis presupuestos" link [style]="{'color': '#ffffff'}" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" />
+            <p-button label="Cerrar sesión" (onClick)="closeSession()" />
+        </div>
+    </ng-template>
+</p-toolbar>
+
+<div class="p-20">
+    <router-outlet />
+</div>
+
+<footer class="p-5">
+    <div class="flex justify-content-between">
+        <div class="apps">
+
+        </div>
+        <div class="dev flex align-items-center gap-3">
+            <p>&#169; {{ date() }}</p>
+            <p>
+                <i class="pi pi-envelope"></i>
+                {{ email() }}
+            </p>
+        </div>
+    </div>
+</footer>

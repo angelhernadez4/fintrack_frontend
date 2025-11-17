@@ -1,0 +1,37 @@
+<div class="text-center md:text-left">
+    <h1 class="title">Iniciar sesión</h1>
+    <p class="subtitle">y controla tus <span class="blue"> finanzas</span></p>
+</div>
+
+<form [formGroup]="form" nonvalidate (keydown.enter)="login()">
+    <div class="mt-6 card flex justify-center">
+        <p-floatlabel> 
+            <input type="text" id="username" pInputText formControlName="username" />
+            <label for="username">Nombre de usuario</label>
+        </p-floatlabel>
+    </div>
+    <div class="mt-6 card flex justify-center">
+        <p-floatlabel> 
+            <p-password id="password" [toggleMask]="true" [feedback]="false" formControlName="password" />
+            <label for="password">Contraseña</label>
+        </p-floatlabel>
+    </div>
+    <div class="mt-4">
+        <app-main-button (onClick)="login()" [label]="loading() ? 'Revisando credenciales...' : 'Iniciar sesión'" [loading]="loading()" [disabled]="form.invalid" />
+    </div>
+</form>
+
+<nav class="nav-auth">
+    <a [routerLink]="'/auth/register'">¿No tienes cuenta? Crea una</a>
+    <a [routerLink]="'/auth/forgot-password'">¿Olvidaste tu contraseña? Reestablecer</a>
+</nav>
+<p-divider align="center" type="dotted"><b>O</b></p-divider>
+<div class="mt-4 flex justify-center">
+  <button 
+    pButton 
+    label="Iniciar sesión con Facebook" 
+    icon="pi pi-facebook" 
+    style="background-color: #3b5998; border: none;"
+    (click)="fLogin()">
+  </button>
+</div>
