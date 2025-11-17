@@ -7,7 +7,6 @@ import { AuthService } from '@core/services/auth.service';
 import { Login } from '@core/interfaces';
 import { NotificationService } from '@core/services/notification.service';
 import { SharedModule } from "@shared/shared.module";
-import { SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Component({
     selector: 'app-login',

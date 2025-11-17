@@ -5,7 +5,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 import { providePrimeNG } from 'primeng/config';
 import { ConfirmationService, MessageService } from 'primeng/api'
-import { FacebookLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login'
 import { authInterceptor } from '@core/interceptor/auth.interceptor';
 import { routes } from './app.routes';
 import MyPreset from './mypreset';
@@ -23,21 +22,5 @@ export const appConfig: ApplicationConfig = {
                 preset: MyPreset,
             }
         }),
-        {
-            provide: 'SocialAuthServiceConfig',
-            useValue: {
-                autoLogin: false,
-                lang: 'en',
-                providers: [
-                    {
-                        id: FacebookLoginProvider.PROVIDER_ID,
-                        provider: new FacebookLoginProvider('clientId')
-                    }
-                ],
-                onError: (err: any) => {
-                    console.error(err);
-                }
-            } as SocialAuthServiceConfig,
-        }
     ]
 };
