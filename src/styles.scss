@@ -64,7 +64,7 @@ p-floatlabel {
 }
 
 p-password {
-    width: 100%; /* Asegura que el contenedor de la etiqueta flotante tenga el 100% de ancho */
+    width: 100%!important; /* Asegura que el contenedor de la etiqueta flotante tenga el 100% de ancho */
 }
 
 p-inputnumber {

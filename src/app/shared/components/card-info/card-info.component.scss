@@ -1,9 +1,20 @@
 .card-responsive {
-    width: 30rem;
+    display: block;
+    width: 30rem!important;
 }
 
 @media (min-width: 768px) {
     .card-responsive {
-        width: 60rem;
+        display: block;
+        width: 60rem!important;
     }
+}
+
+.truncate-title {
+    display: inline-block;
+    max-width: 14rem; /* Ajusta el ancho deseado */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
 }

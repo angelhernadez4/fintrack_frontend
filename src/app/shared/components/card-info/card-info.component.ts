@@ -20,9 +20,15 @@ export class CardInfoComponent {
         this.onClick.emit({ event, data: this.data() })
     }
 
-    get shortenedTitle(): string {
-        const words = this.titleKey().split(' ');
-        return words.length > 4 ? words.slice(0, 4).join(' ') + '...' : this.titleKey();
+    ngOnInit() {
+        console.log(this.truncatedTitle);
+        
     }
+
+    get truncatedTitle() {
+        const words = this.titleKey().split(' ');
+        return words.length > 4 ? words.slice(0, 4).join(' ') + '…' : this.titleKey();
+    }
+
 
 }

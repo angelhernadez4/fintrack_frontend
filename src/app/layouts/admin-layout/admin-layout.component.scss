@@ -7,3 +7,13 @@
     font-weight: 600;
     border-bottom: 2px solid var(--p-blue-300);
 }
+
+.logo_title {
+    color: #FFFFFF;
+    font-size: 2rem;
+    font-weight: 900;
+
+    .logo_second {
+        color: var(--p-blue-500);
+    }
+}
